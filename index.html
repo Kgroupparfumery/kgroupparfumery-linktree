@@ -4,40 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kgroup Parfumery — La senteur du luxe</title>
-<meta name="description" content="Retrouvez Kgroup Parfumery sur Instagram et commandez directement via WhatsApp.">
+<meta name="description" content="Retrouvez Kgroup Parfumery sur Instagram, Facebook, TikTok et WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #121110;
-    --bg-soft: #17140f;
-    --line: #2c2820;
+    --line: #37322a;
     --line-hover: #7f9a63;
     --sage: #8fac6f;
-    --sage-soft: #6f8a54;
     --gold: #b08d57;
     --ink: #f3f1ea;
-    --ink-muted: #a8a296;
+    --ink-muted: #b9b3a4;
   }
 
   *{ box-sizing: border-box; }
 
-  html{ -webkit-text-size-adjust: 100%; }
-
   body{
     margin: 0;
     min-height: 100svh;
+    position: relative;
     background: var(--bg);
-    background-image:
-      radial-gradient(ellipse 700px 500px at 50% -10%, rgba(143,172,111,0.08), transparent 60%);
     color: var(--ink);
     font-family: 'Jost', system-ui, sans-serif;
     font-weight: 300;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4.5rem 1.5rem 3rem;
+    padding: 4rem 1.5rem 3rem;
+    overflow-x: hidden;
+  }
+
+  /* ---- Fond photo, assombri pour garder le texte lisible ---- */
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center 20%;
+    filter: blur(2px) saturate(85%);
+    transform: scale(1.05);
+    z-index: -2;
+  }
+  body::after{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,9,8,0.88) 0%, rgba(10,9,8,0.93) 45%, rgba(10,9,8,0.97) 100%);
+    z-index: -1;
   }
 
   .wrap{
@@ -61,12 +78,11 @@
   }
 
   .mark{
-    width: 58px;
-    height: 58px;
-    margin-bottom: 1.4rem;
-  }
-  .mark circle, .mark path{
-    stroke: var(--sage);
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin-bottom: 1.3rem;
+    box-shadow: 0 0 0 1px rgba(143,172,111,0.35);
   }
 
   .brand{
@@ -92,8 +108,8 @@
     width: 46px;
     height: 1px;
     background: var(--gold);
-    opacity: 0.7;
-    margin-bottom: 2.6rem;
+    opacity: 0.75;
+    margin-bottom: 2.4rem;
   }
 
   /* ---- Links ---- */
@@ -106,7 +122,7 @@
     display: flex;
     align-items: center;
     gap: 0.9rem;
-    padding: 1.05rem 0.4rem;
+    padding: 0.95rem 0.4rem;
     border-top: 1px solid var(--line);
     text-decoration: none;
     color: var(--ink);
@@ -138,17 +154,26 @@
   }
 
   .link-label{
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     font-weight: 400;
     letter-spacing: 0.01em;
   }
 
   .link-sub{
     display: block;
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     color: var(--ink-muted);
     margin-top: 0.15rem;
     font-weight: 300;
+  }
+
+  /* ---- Section dividers ---- */
+  .section-label{
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    opacity: 0.55;
+    margin: 1.7rem 0 0.3rem 0.4rem;
   }
 
   /* ---- Footer ---- */
@@ -171,40 +196,52 @@
   <div class="wrap">
 
     <div class="hero">
-      <!-- Repère : ce monogramme est un PLACEHOLDER simplifié.
-           Remplace ce bloc <svg> par ton vrai logo (fichier .svg exporté d'Illustrator)
-           pour un rendu identique à celui de tes étiquettes. -->
-      <svg class="mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="58" r="34" stroke-width="2.2"/>
-        <rect x="44" y="14" width="12" height="16" rx="2" stroke-width="2.2"/>
-        <path d="M40 16 L32 10 M40 20 L30 18 M40 24 L32 26" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M36 66 C 42 50, 58 50, 64 66 C 58 58, 42 58, 36 66 Z" stroke-width="2"/>
-      </svg>
-
+      <img class="mark" src="logo.png" alt="Logo Kgroup Parfumery">
       <h1 class="brand">Kgroup Parfumery</h1>
       <p class="tagline">La senteur du luxe</p>
       <div class="rule"></div>
     </div>
 
+    <p class="section-label">Nous suivre</p>
     <nav class="links">
 
       <a class="link" href="https://instagram.com/kgroupparfumery" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
-        <span><span class="link-label">Nous suivre sur Instagram</span><span class="link-sub">@kgroupparfumery</span></span>
+        <span><span class="link-label">Instagram</span><span class="link-sub">@kgroupparfumery</span></span>
       </a>
+
+      <a class="link" href="https://www.facebook.com/share/162TP1H1py/?mibextid=wwXIfr" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v3H9v3h2v6h3v-6h2.2l.8-3H14v-2a1 1 0 0 1 1-1h2z"/></svg>
+        <span><span class="link-label">Facebook</span></span>
+      </a>
+
+      <a class="link" href="https://www.tiktok.com/@kgroup.parfumery" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.5 2.3 2 4 4.5 4.3"/></svg>
+        <span><span class="link-label">TikTok</span><span class="link-sub">@kgroup.parfumery</span></span>
+      </a>
+
+    </nav>
+
+    <p class="section-label">Commander</p>
+    <nav class="links">
 
       <a class="link" href="https://wa.me/212696975699" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 12a8 8 0 1 1-3.6-6.7"/><path d="M20 12l-4-1 1-4"/></svg>
-        <span><span class="link-label">Commander — Maroc</span><span class="link-sub">+212 696 975 699</span></span>
+        <span><span class="link-label">Commander sur WhatsApp</span><span class="link-sub">+212 696 975 699</span></span>
       </a>
 
-      <a class="link" href="https://wa.me/237666956769" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20 12a8 8 0 1 1-3.6-6.7"/><path d="M20 12l-4-1 1-4"/></svg>
-        <span><span class="link-label">Commander — Cameroun</span><span class="link-sub">+237 666 95 67 69</span></span>
+      <a class="link" href="https://chat.whatsapp.com/Jf06qiIXNhiKR2J8Qmm5yk" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="7" r="2.4"/><path d="M14.8 12.2c2.4.3 4.2 2 4.2 4.3"/></svg>
+        <span><span class="link-label">Groupe WhatsApp</span></span>
+      </a>
+
+      <a class="link" href="https://whatsapp.com/channel/0029VbCE8b0FHWq3jNwsD01M" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 19V6a1 1 0 0 1 1-1h9l6 6v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M8 10h6M8 14h8"/></svg>
+        <span><span class="link-label">Chaîne WhatsApp</span></span>
       </a>
 
       <!-- Repère : remplace le href="#" ci-dessous par le vrai lien
-           (catalogue PDF, site vitrine, ou dossier Drive de la collection) -->
+           (catalogue PDF, site vitrine, ou dossier public de la collection) -->
       <a class="link" href="#">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 19V6a1 1 0 0 1 1-1h9l6 6v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M14 5v5h5"/></svg>
         <span><span class="link-label">Découvrir la collection</span></span>
